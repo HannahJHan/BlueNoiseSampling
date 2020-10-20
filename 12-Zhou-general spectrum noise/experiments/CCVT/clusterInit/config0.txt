@@ -1,0 +1,10 @@
+Range -1
+Points 900
+Delta 3.0
+DDA dda128_0p15.pfm
+DeltaT 0.005
+Continue n
+ElecInit n
+InnerLoop 50
+AutoStop y
+ClusterInit y

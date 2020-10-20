@@ -1,0 +1,68 @@
+#include <Analyzer.h>
+#include <PointAnalyzer.h>
+#include <cmdlnparser.h>
+#include <sampler.h>
+#include <iostream>
+#include <fstream>
+#include <common.h>
+
+using namespace std;
+using namespace eea;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 			PointAnalyzer to visualize points that are written directly in EPS format.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///
+/// \brief PointAnalyzer::~PointAnalyzer
+///
+
+PointAnalyzer::~PointAnalyzer(){}
+
+Analyzer* PointAnalyzer::createAnalyzer(Sampler *s, Integrand* I, const vector<string>& AnalyzerParams){
+    return new PointAnalyzer(s, AnalyzerParams);
+}
+
+PointAnalyzer::PointAnalyzer(Sampler* s, const vector<string>& AnalyzerParams) {
+
+    AnalyzerType = "pts";
+    _sampler = s;
+    CLParser::FindMultiArgs<int>(-1, _nSamples, AnalyzerParams, NSampStr) ;
+    _nTrials = CLParser::FindArgument<int>(AnalyzerParams, nTrialsStr) ;
+}
+
+void PointAnalyzer::RunAnalysis(string &prefix){
+
+    for(int j = 0; j <_nSamples.size();j++){
+
+        for(int trial = 1; trial <= _nTrials; trial++){
+
+            const int n(_nSamples[j]) ;
+            _sampler->Sample(_pts, n);
+
+            /// Homogenize sampling patterns
+            //_sampler->homogenize_samples(_pts);
+
+            ///
+            ///Uncomment this function if your samples are going out of the domain range
+            /// for toroidal wrapping
+            ///
+            //_sampler->toroidal_wrapping(_pts);
+
+            ///
+            /// Add index of each file with trailing zeros
+            ///
+            //##########################################################
+            std::stringstream ss;
+            ss.str(std::string());
+            ss << trial;
+            std::string s1 = ss.str();
+            paddedzerosN(s1, _nTrials);
+            //##########################################################
+            ss.str(std::string());
+            ss << prefix << "-" << _sampler->GetType() << "-n" << n << "-" << s1 << ".txt";
+            string filename = ss.str();
+            IO::WriteEPS(filename, _pts);
+        }
+    }
+}
+

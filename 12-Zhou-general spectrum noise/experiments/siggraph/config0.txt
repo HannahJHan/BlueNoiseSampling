@@ -1,0 +1,8 @@
+Range 0.4
+Points 4000
+Delta 2
+DDA dda.pfm
+Loop 100
+DeltaT 0.005
+InnerLoop 50
+Continue n

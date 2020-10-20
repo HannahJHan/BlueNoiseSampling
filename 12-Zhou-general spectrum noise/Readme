@@ -1,0 +1,11 @@
+This package includes the code for a GPU solver of our paper entitled 'Point Sampling with General Noise Spectrum'. Some examples of the experimental setup and results are also included.
+
+The code is implemented in Microsoft Visual Studio 2008. To use it you need to install CUDA and OpenCV 2.1. Other versions of OpenCV may also work, we have not tested them.
+
+The CUDA code requires sm_21 GPU architecture, because it relies on several atomic operations that are only available in sm_21 or above architecture. If your GPU does not support sm_21, you can disable atomic operations, but keep in mind that this may lower the quality of the experiment results due to incorrect concurrent computation.
+
+In the 'experiments' folder, each subfolder contains a configuration file (named config0.txt) as well as a differential distribution function file (usually named dda.pfm). To run an experiment, copy the DDAExport.exe executable file to the experimental subfolder, and type in command line 'DDAExport.exe config0.txt'.
+
+To view a differential distribution function file (in .pfm file format), you can use HDRShop or HDRView program (which is included in the package).
+
+To report bugs, please contact yahan.zhou@gmail.com.

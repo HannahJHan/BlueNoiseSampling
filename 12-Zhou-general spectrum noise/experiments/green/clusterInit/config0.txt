@@ -1,0 +1,14 @@
+Range 0.55
+Points 900
+Delta 2
+DDA dda.pfm
+Loop 100
+DeltaT 0.005
+InnerLoop 50
+RScale 1.00
+Continue n
+ElecInit n
+GridInit n
+ClusterInit y
+InnerLoop 20
+AutoStop y

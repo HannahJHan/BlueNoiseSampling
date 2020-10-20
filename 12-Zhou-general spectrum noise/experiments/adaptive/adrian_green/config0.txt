@@ -1,0 +1,10 @@
+Range 0.10
+Points 40000
+Delta 2
+DDA dda_centered.pfm
+Loop 5000
+DeltaT 50
+InnerLoop 1
+RScale 0.96
+Adaptive adrian_test.tif
+Continue n

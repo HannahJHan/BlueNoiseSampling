@@ -1,0 +1,12 @@
+Range -1
+Points 20000
+Delta 3
+DDA dda128_0p15.pfm
+IteCount 3000
+DeltaT 2000
+Adaptive stippling_square.png
+Continue n
+ElecInit n
+InnerLoop 3
+AutoStop y
+RScale 1.0
