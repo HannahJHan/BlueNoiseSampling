@@ -1,12 +1,11 @@
 # BlueNoiseSampling
-Recent blue noise sampling method open source code collection
 
 
 A code collection for blue noise sampling in computer graphics thanks to the shoulders of sampling community.
 
 
   
-Mainly comes from：
+## Mainly comes from：
 
  [Prof. Dr. Victor Ostromoukhov's Research Group](https://perso.liris.cnrs.fr/victor.ostromoukhov/publications/publications_abstracts.html)
  
